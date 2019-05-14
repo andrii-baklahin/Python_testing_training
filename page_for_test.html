@@ -2,32 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Python Test</title>
+    <title>Color Chat</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <style>
    #main {
-  margin: auto;
+  margin: 10px;
   width: 60%;
   border: 3px solid #73AD21;
   padding: 10px;
     }
 
-    #name {
+    #chat {
+  margin: 10px;
+  width: 60%;
+  border: 3px solid #73AD21;
+  padding: 10px;
+  min-height: 200px;
     }
 
     </style>
+
+    <script type="text/javascript">
+$(document).ready(function() {
+        $('#btn').click(function(){
+            var name = $('#name').val();
+            var msg = $('#message').val();
+            var color = $('input[name=color]:checked').val();
+            var chat = $('#chat');
+
+            if (color == 'red'){
+                chat.append(
+                    "<p>" + name + "</p>" +
+                    "<p style='color:red'>" + msg + "</p>");
+            } else if (color == 'blue'){
+                chat.append(
+                    "<p>" + name + "</p>" +
+                    "<p style='color:blue'>" + msg + "</p>");
+            } else {
+                chat.append(
+                    "<p>" + name + "</p>" +
+                    "<p style='color:green'>" + msg + "</p>");
+                    };
+            });
+});
+    </script>
 
 
 </head>
 <body>
 <div id="main">
-<h1>My chat</h1><br>
+<h1>Color chat</h1><br>
     <label for="name">Your name</label><br>
     <input type="text" id="name"><br>
 
     <label for="message">Your message</label><br>
     <textarea id="message" rows="5" cols="45"> </textarea>
+    <br>
 
-</div>
+    <input type="radio" id="red"
+     name="color" value="red">
+    <label for="red">red</label>
+
+    <input type="radio" id="blue"
+     name="color" value="blue">
+    <label for="blue">blue</label>
+
+    <input type="radio" id="green"
+     name="color" value="green">
+    <label for="green">green</label>
+
+    <br>
+    <button id="btn">OK</button>
+    </div>
+
+    <div id="chat" class="chat">
+
+    </div>
 </body>
 </html>
